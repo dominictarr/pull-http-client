@@ -4,7 +4,7 @@ make http client requests in pull streamy ways.
 
 # api
 
-http is a pretty ugly protocol. it has many features.
+http is a pretty ugly protocol. It has _many_ features.
 `pull-http-client` starts with the most general interface to http for pull-streams,
 and then gives you several helpers that are each more suited to particular ways http is often used.
 
