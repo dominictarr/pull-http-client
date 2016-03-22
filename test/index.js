@@ -15,7 +15,6 @@ tape('simple', function (t) {
     res.end(JSON.stringify({url: req.url, status: req.status, headers: req.headers}))
   })
   .listen(function () {
-    console.log('server', server.address())
     var url = URL.format({
         protocol:'http',
         hostname: 'localhost',
@@ -23,20 +22,17 @@ tape('simple', function (t) {
         pathname: '/foo/bar/baz',
         search: '?whatever=true'
       })
-
-//    http.request(url, function (err) {if(err) throw err}).end()
-
     client.async({url: url, json: true}, function (err, body) {
       console.log(  'RES', err, body)
+      t.notOk(err)
+      t.ok(body)
       t.end()
       server.close()
     })
-
-//    pull(function (_,cb){cb(true)}, client(url, function (err, source) {
-//      console.log('res', err)
-//      pull(source, pull.collect(console.log))
-//    }))
   })
 })
+
+
+
 
 
